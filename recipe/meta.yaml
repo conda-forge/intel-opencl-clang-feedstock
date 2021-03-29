@@ -11,7 +11,7 @@ source:
   sha256: eb7208ee91bd77c365617424cdf776e33cb2900516430564afabc84892c1937e
 
 build:
-  number: 0
+  number: 1
   skip: true  # [not linux]
 
 requirements:
@@ -23,9 +23,9 @@ requirements:
     - llvm      {{ llvm_version }}
     - clangdev  {{ llvm_version }}
     - libclang-cpp  {{ llvm_version }}
-    - llvm-spirv   {{ llvm_version }}
+    - llvm-spirv   {{ llvm_version }}.*
   run:
-    - {{ pin_compatible("llvm-spirv", exact=True) }}
+    - {{ pin_compatible("llvm-spirv", max_pin="x.x.x.x.x.x") }}
 
 test:
   commands:
