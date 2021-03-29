@@ -1,5 +1,5 @@
 {% set name = "opencl-clang" %}
-{% set version = "11.0.0" %}
+{% set version = "10.0.0" %}
 {% set llvm_version = version %}
 
 package:
@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/intel/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 0c0d5fb4bfc85c1c1ae4b441eea223193721ecdd3d9165bcc6f7859d90e5bf66
+  url: https://github.com/intel/opencl-clang/archive/v{{ version }}.tar.gz
+  sha256: eb7208ee91bd77c365617424cdf776e33cb2900516430564afabc84892c1937e
 
 build:
-  number: 1
+  number: 0
   skip: true  # [not linux]
 
 requirements:
