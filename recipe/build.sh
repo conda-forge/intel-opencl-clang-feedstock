@@ -3,7 +3,7 @@
 mkdir build
 cd build
 
-export CXXFLAGS="$CXXFLAGS"' -DPRIu64=\"lu\"'
+export CXXFLAGS="$CXXFLAGS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS"
 export LDFLAGS="$LDFLAGS -Wl,--exclude-libs,ALL"
 
 cmake \
