@@ -1,6 +1,6 @@
 {% set name = "opencl-clang" %}
 {% set version = "16.0.0" %}
-{% set llvm_version = version %}
+{% set llvm_version = version.split(".")[0] %}
 
 package:
   name: intel-opencl-clang
@@ -19,11 +19,11 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake
   host:
-    - llvmdev   {{ llvm_version }}
-    - llvm      {{ llvm_version }}
-    - clangdev  {{ llvm_version }}
-    - libclang-cpp  {{ llvm_version }}
-    - llvm-spirv   {{ llvm_version }}
+    - llvmdev   {{ llvm_version }}.*
+    - llvm      {{ llvm_version }}.*
+    - clangdev  {{ llvm_version }}.*
+    - libclang-cpp  {{ llvm_version }}.*
+    - llvm-spirv   {{ llvm_version }}.*
   run:
     - {{ pin_compatible("llvm-spirv", exact=True) }}
 
