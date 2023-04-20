@@ -9,6 +9,11 @@ package:
 source:
   url: https://github.com/intel/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 0a1b098cb56dc3af1dbeea6dce3124314238dfe50e30e25161ccd5a9067e7ff5
+  patches:
+    - patches/gh415.patch
+    - patches/gh416.patch
+    - patches/gh419.patch
+    - patches/gh420.patch
 
 build:
   number: 0

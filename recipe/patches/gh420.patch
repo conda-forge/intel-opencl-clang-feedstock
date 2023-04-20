@@ -1,0 +1,52 @@
+From d74d0b46c940eb26f58e83a06dd9e22798ff79f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Franti=C5=A1ek=20Zatloukal?= <fzatlouk@redhat.com>
+Date: Fri, 14 Apr 2023 15:06:11 +0200
+Subject: [PATCH] [RFC/DRAFT]: InitializeNativeTarget() instead of
+ InitializeAllTargets()
+
+Fixes/works around: https://github.com/intel/opencl-clang/issues/417
+The other way around would be to link against all the Targets that LLVM Supports.
+---
+ CMakeLists.txt   | 3 ++-
+ opencl_clang.cpp | 7 +++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3d7eff1..2fd222a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -341,7 +341,7 @@ target_link_libraries( ${TARGET_NAME}
+                        LLVMX86Info
+                        LLVMX86Disassembler
+                        LLVMAnalysis
+-                       LLVMCodeGen
++                       LLVMX86CodeGen
+                        LLVMCore
+                        LLVMipo
+                        LLVMInstCombine
+@@ -371,6 +371,7 @@ install(FILES opencl_clang.h
+         DESTINATION include/cclang
+         COMPONENT ${TARGET_NAME})
+ 
++add_custom_target(deploy DEPENDS install-${TARGET_NAME})
+ #
+ # Stripped PDB files
+ #
+diff --git a/opencl_clang.cpp b/opencl_clang.cpp
+index eed8f02..5c438ae 100644
+--- a/opencl_clang.cpp
++++ b/opencl_clang.cpp
+@@ -99,10 +99,9 @@ void CommonClangInitialize() {
+       // llvm_shutdown before static object are destroyed, so we use atexit to
+       // satisfy this requirement.
+       atexit(CommonClangTerminate);
+-      llvm::InitializeAllTargets();
+-      llvm::InitializeAllAsmPrinters();
+-      llvm::InitializeAllAsmParsers();
+-      llvm::InitializeAllTargetMCs();
++      llvm::InitializeNativeTarget();
++      llvm::InitializeNativeTargetAsmPrinter();
++      llvm::InitializeNativeTargetAsmParser();
+       lazyCCInit = false;
+     }
+   }
