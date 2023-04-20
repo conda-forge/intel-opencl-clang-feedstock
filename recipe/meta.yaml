@@ -23,6 +23,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake
+    - make     # [unix]
   host:
     - llvmdev   {{ llvm_version }}.*
     - llvm      {{ llvm_version }}.*
