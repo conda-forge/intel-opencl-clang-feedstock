@@ -17,5 +17,6 @@ cmake \
 
 make -j${CPU_COUNT} VERBOSE=1
 make install
+make deploy
 
 ln -sf $PREFIX/lib/libopencl_clang.so $PREFIX/lib/libcommon_clang.so
