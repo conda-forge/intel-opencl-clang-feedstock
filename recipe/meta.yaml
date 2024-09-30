@@ -13,10 +13,10 @@ source:
 build:
   number: 0
   skip: true  # [not linux]
-
-requirements:
   run_exports:
     - {{ pin_subpackage("opencl-clang", max_pin="x") }}
+
+requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
