@@ -19,6 +19,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - cmake
+    - make
   host:
     - llvmdev   {{ llvm_version }}
     - llvm      {{ llvm_version }}
