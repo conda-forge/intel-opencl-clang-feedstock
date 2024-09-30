@@ -25,9 +25,7 @@ requirements:
     - llvm      {{ llvm_version }}
     - clangdev  {{ llvm_version }}
     - libclang-cpp  {{ llvm_version }}
-    - llvm-spirv   {{ llvm_version }}
-  run:
-    - {{ pin_compatible("llvm-spirv", exact=True) }}
+    - libllvmspirv   {{ llvm_version }}
 
 test:
   commands:
