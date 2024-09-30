@@ -1,6 +1,6 @@
 {% set name = "opencl-clang" %}
 {% set version = "15.0.0" %}
-{% set llvm_version = version %}
+{% set llvm_version = version.split(".")[0] ~ "." ~ version.split(".")[1] %}
 
 package:
   name: intel-opencl-clang
