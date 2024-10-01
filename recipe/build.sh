@@ -11,7 +11,7 @@ cmake \
     -DCMAKE_PREFIX_PATH=$PREFIX \
     -DLLVMSPIRV_INCLUDED_IN_LLVM=no \
     -DSPIRV_TRANSLATOR_DIR=$PREFIX \
-    -DOPENCL_CLANG_LIBRARY_NAME=opencl_clang \
+    -DCOMMON_CLANG_LIBRARY_NAME=opencl_clang \
     -S . \
     -B ./build
 
