@@ -13,6 +13,8 @@ source:
 build:
   number: 0
   skip: true  # [not linux]
+  run_exports:
+    - {{ pin_subpackage("intel-opencl-clang", max_pin="x") }}
 
 requirements:
   build:
