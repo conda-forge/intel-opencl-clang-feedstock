@@ -1,5 +1,5 @@
 {% set name = "opencl-clang" %}
-{% set version = "19.1.0" %}
+{% set version = "21.1.2" %}
 {% set llvm_version = version.split(".")[0] ~ "." ~ version.split(".")[1] %}
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/intel/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 25d0bdda45b93800705f834066c1e74910ddc2f944cd9dbc762c4c15cac9e117
+  sha256: f8470012d668454f58d02312308ea5b8da7ae441afbdf0407956c917fec30595
 
 build:
   number: 0
