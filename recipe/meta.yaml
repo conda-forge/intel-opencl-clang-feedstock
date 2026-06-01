@@ -1,5 +1,5 @@
 {% set name = "opencl-clang" %}
-{% set version = "16.0.0" %}
+{% set version = "16.0.12" %}
 {% set llvm_version = version.split(".")[0] ~ "." ~ version.split(".")[1] %}
 
 package:
@@ -8,11 +8,13 @@ package:
 
 source:
   url: https://github.com/intel/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 0a1b098cb56dc3af1dbeea6dce3124314238dfe50e30e25161ccd5a9067e7ff5
+  sha256: 1677649a3ee1114a2c971f0ac6a17c00e36a00ebe33a5f4e2888508800b0e1bd
 
 build:
   number: 0
   skip: true  # [not linux]
+  run_exports:
+    - {{ pin_subpackage("intel-opencl-clang", max_pin="x") }}
 
 requirements:
   build:
@@ -40,5 +42,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - oleksandr-pavlyk
     - ZzEeKkAa
     - isuruf
+    - hmaarrfk
